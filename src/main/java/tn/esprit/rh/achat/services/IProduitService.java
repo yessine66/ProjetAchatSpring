@@ -3,6 +3,7 @@ package tn.esprit.rh.achat.services;
 import tn.esprit.rh.achat.entities.Produit;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IProduitService {
 
@@ -14,7 +15,7 @@ public interface IProduitService {
 
 	Produit updateProduit(Produit p);
 
-	Produit retrieveProduit(Long id);
+	Optional<Produit> retrieveProduit(Long id);
 
 	void assignProduitToStock(Long idProduit, Long idStock);
 

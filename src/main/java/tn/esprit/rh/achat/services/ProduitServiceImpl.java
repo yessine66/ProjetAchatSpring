@@ -11,6 +11,7 @@ import tn.esprit.rh.achat.repositories.StockRepository;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -51,8 +52,8 @@ public class ProduitServiceImpl implements IProduitService {
 	}
 
 	@Override
-	public Produit retrieveProduit(Long produitId) {
-		Produit produit = produitRepository.findById(produitId).orElse(null);
+	public Optional<Produit> retrieveProduit(Long produitId) {
+		Optional < Produit> produit = Optional.ofNullable(produitRepository.findById(produitId).orElse(null));
 		log.info("produit :" + produit);
 		return produit;
 	}
