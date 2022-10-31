@@ -11,15 +11,26 @@ pipeline{
         
         stage('Github') {
             steps {
-                echo 'Pulling... ';
-                git branch: 'main', url: 'https://github.com/yessine66/ProjetAchatSpring.git'
+                 echo 'Pulling...';
+                 git branch: 'daliBack',
+                 url : 'https://github.com/yessine66/ProjetAchatSpring.git';
             }
         }
-        
-        stage("TestEnv"){
+        stage('MVN CLEAN'){
             steps{
-                sh"""mvn -version"""
+                 echo 'Pulling...';
+                 sh 'mvn clean'
             }
+        }
+        stage('MVN COMPILE'){
+            steps{
+                sh 'mvn compile'
+            }
+        }
+        stage('MVN PACKAGE'){
+             steps{
+                 sh 'mvn package'
+             }
         }
     }
 }
