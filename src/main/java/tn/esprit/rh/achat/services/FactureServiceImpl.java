@@ -75,7 +75,7 @@ public class FactureServiceImpl implements IFactureService {
 	public void cancelFacture(Long factureId) {
 		// Méthode 01
 		//Facture facture = factureRepository.findById(factureId).get();
-		Facture facture = factureRepository.findById(factureId).orElse(new Facture());
+		Facture facture = factureRepository.findById(factureId).orElseThrow(NullPointerException::new);
 		facture.setArchivee(true);
 		factureRepository.save(facture);
 		//Méthode 02 (Avec JPQL)
@@ -99,7 +99,7 @@ public class FactureServiceImpl implements IFactureService {
 	@Override
 	public void assignOperateurToFacture(Long idOperateur, Long idFacture) {
 		Facture facture = factureRepository.findById(idFacture).orElse(null);
-		Operateur operateur = operateurRepository.findById(idOperateur).orElse(null);
+		Operateur operateur = operateurRepository.findById(idOperateur).orElseThrow(NullPointerException::new);
 		operateur.getFactures().add(facture);
 		operateurRepository.save(operateur);
 	}
