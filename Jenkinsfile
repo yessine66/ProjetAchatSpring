@@ -38,9 +38,9 @@ pipeline{
               }
          }
          stage("nexus deploy"){
-                          steps{
-                           nexusArtifactUploader artifacts: [[artifactId: 'ProjetAchatSpring', classifier: '', file: '/var/lib/jenkins/workspace/projetDevops/target/docker-spring-boot.jar', type: 'jar']], credentialsId: 'nexus-snapshots', groupId: 'tn.esprit.rh.achat', nexusUrl: '192.168.56.10:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'nexus-snapshots', version: '2.2.4'
-                          }
-                          }
+               steps{
+               nexusArtifactUploader artifacts: [[artifactId: 'ProjetAchatSpring', classifier: '', file: '/var/lib/jenkins/workspace/projetDevops/target/docker-spring-boot.jar', type: 'jar']], credentialsId: 'nexus-snapshots', groupId: 'tn.esprit.rh.achat', nexusUrl: '192.168.56.10:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'nexus-snapshots', version: '2.2.4'
+               }
+
     }
 }
