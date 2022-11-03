@@ -38,15 +38,26 @@ pipeline{
               }
          }
          stage("nexus deploy"){
-                          steps{
-                           nexusArtifactUploader artifacts: [[artifactId: 'ProjetAchatSpring', classifier: '', file: '/var/lib/jenkins/workspace/Devops_Project/target/achat-1.0.jar', type: 'jar']], credentialsId: 'nexus-snapshots', groupId: 'tn.esprit.rh.achat', nexusUrl: '192.168.56.10:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'nexus-snapshots', version: '2.2.4'
-                          }
-                       }
+               steps{
+               nexusArtifactUploader artifacts: [[artifactId: 'ProjetAchatSpring', classifier: '', file: '/var/lib/jenkins/workspace/Devops_Project/target/achat-1.0.jar', type: 'jar']], credentialsId: 'nexus-snapshots', groupId: 'tn.esprit.rh.achat', nexusUrl: '192.168.56.10:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'nexus-snapshots', version: '2.2.4'
+               }
+         }
 
-                       stage('Build Docker Image') {
-                                        steps {
-                                        sh 'docker build -t medalibnasr/dockerfile_achat:2.2.4 .'
-                                        }
-                                     }
+         stage('Build Docker Image') {
+               steps {
+               sh 'docker build -t medalibnasr/dockerfile_achat:2.2.4 .'
+                }
+         }
+
+         stage('Push Docker Image') {
+                steps {
+                 sh 'docker push medalibnasr/dockerfile_achat:2.2.4'
+                 }
+         }
+         stage('DOCKER COMPOSE') {
+                            steps {
+                               sh 'docker-compose up -d --build'
+                            }
+                       }
     }
 }
