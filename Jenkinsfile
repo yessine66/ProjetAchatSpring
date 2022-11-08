@@ -59,7 +59,7 @@ pipeline{
          }
          stage('DOCKER COMPOSE') {
                             steps {
-                               sh "docker login -u medalibnasr -p Le4jul96!"
+                               sh "docker login -u medalibnasr -p ${dockerHubPwd}"
                                sh 'docker-compose up -d --build'
                             }
                        }
