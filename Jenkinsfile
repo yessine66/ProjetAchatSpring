@@ -37,11 +37,11 @@ pipeline{
                   sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=admin123'
               }
          }
-         stage("nexus deploy"){
+         /*stage("nexus deploy"){
                steps{
-               nexusArtifactUploader artifacts: [[artifactId: 'achat', classifier: '', file: 'target/achat-1.0.jar', type: 'jar']], credentialsId: 'nexus-snapshots', groupId: 'tn.esprit.rh', nexusUrl: '192.168.56.10:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'http://192.168.56.10:8081/repository/nexus-snapshots', version: '1.0'
+               nexusArtifactUploader artifacts: [[artifactId: 'achat', classifier: '', file: '/var/lib/jenkins/workspace/Devops_Project/target/achat-1.0.jar', type: 'jar']], credentialsId: 'nexus-snapshots', groupId: 'tn.esprit.rh', nexusUrl: '192.168.56.10:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'http://192.168.56.10:8081/repository/nexus-snapshots', version: '1.0'
                }
-         }
+         }*/
 
          stage('Build Docker Image') {
                steps {
@@ -59,7 +59,6 @@ pipeline{
          }
          stage('DOCKER COMPOSE') {
                             steps {
-                               sh "docker login -u medalibnasr -p ${dockerHubPwd}"
                                sh 'docker-compose up -d --build'
                             }
                        }
