@@ -51,9 +51,6 @@ pipeline{
 
          stage('Push Docker Image') {
                 steps {
-                withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerHubPwd')]) {
-                sh "docker login -u medalibnasr -p ${dockerHubPwd}"
-                }
                 sh 'docker push medalibnasr/dockerfile_achat:2.2.4'
                  }
          }
