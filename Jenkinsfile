@@ -51,7 +51,7 @@ pipeline{
 
          stage('Push Docker Image') {
                 steps {
-                 sh 'docker push medalibnasr/dockerfile_achat:2.2.4'
+                 sh 'docker push medalibnasr/dockerfile_achat:2.2.4 .'
                  }
          }
          stage('DOCKER COMPOSE') {
