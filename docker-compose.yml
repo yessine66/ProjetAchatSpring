@@ -18,7 +18,7 @@ services:
   app:
     depends_on:
       - mysqldb
-    image:  spicymgws/jenkins-docker
+    image:  spicymgws/jenkins-docker:102
     restart: on-failure
     ports:
       - 8089:8089
@@ -34,6 +34,6 @@ services:
       - .m2:/root/.m2
     stdin_open: true
     tty: true
- 
+
 volumes:
   db:
