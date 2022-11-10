@@ -12,14 +12,31 @@ pipeline{
         stage('Github') {
             steps {
                 echo 'Pulling... ';
-                git branch: 'main', url: 'https://github.com/yessine66/ProjetAchatSpring.git'
+                git branch: 'aziz',
+ 		url: 'https://github.com/yessine66/ProjetAchatSpring.git'
             }
         }
         
         stage("TestEnv"){
             steps{
-                sh"""mvn -version"""
+                sh"""mvn -version"""     
             }
         }
+         stage('MVN CLEAN'){
+            steps{
+                echo 'Pulling...';
+                sh 'mvn clean'
+                }
+            }
+             stage('MVN COMPILE'){
+                steps{
+                sh 'mvn compile'
+                }
+             }
+             stage('MVN PACKAGE'){
+                steps{
+                sh 'mvn package'
+                }
+             }
     }
 }
