@@ -8,6 +8,8 @@ import tn.esprit.rh.achat.services.IOperateurService;
 
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class OperateurServiceImplTest  {
@@ -20,16 +22,38 @@ class OperateurServiceImplTest  {
     @Test
     @Order(1)
     void testRetrieveAllOperateurs() {
-        List<Operateur> listOp = operateurService.retrieveAllOperateurs();
-        Assertions.assertEquals(0,listOp.size());
+
+        //Operateur op = operateurService.retrieveAllOperateurs(Operateur.builder().)
+
+
+        /*List<Operateur> listOp = operateurService.retrieveAllOperateurs();
+        Assertions.assertEquals(0,listOp.size());*/
+
+        List<Operateur> listOperateurs = operateurService.retrieveAllOperateurs();
+        //assertEquals(0, listOperateurs.size());
+        assertNotNull(listOperateurs);
+
+    }
+
+
+    @Test
+    @Order(2)
+    void testAddOperateur() {
+/*
+        Operateur op = new Operateur();
+        op.setNom("Operateur9");
+        op.setPassword("secret9");
+        op.setPrenom("Telecm9");
+        Operateur opTest = operateurService.addOperateur(op);
+        assertEquals(op.getNom(), opTest.getNom());*/
+
+        Operateur o = operateurService.addOperateur(Operateur.builder().nom("opNomTest").
+                prenom("opPrenomTest").password("opPassTest").build());
+        assertNotNull(o);
+
     }
 
 /*
-    Operateur addOperateur(Operateur o) {
-        return null;
-    }
-
-
     void deleteOperateur(Long id) {
 
     }
