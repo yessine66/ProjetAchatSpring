@@ -20,7 +20,7 @@ class OperateurServiceImplTest  {
 
 
     @Test
-    @Order(1)
+    @Order(2)
     void testRetrieveAllOperateurs() {
 
         //Operateur op = operateurService.retrieveAllOperateurs(Operateur.builder().)
@@ -37,7 +37,7 @@ class OperateurServiceImplTest  {
 
 
     @Test
-    @Order(2)
+    @Order(1)
     void testAddOperateur() {
 /*
         Operateur op = new Operateur();
