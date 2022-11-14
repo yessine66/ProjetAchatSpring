@@ -41,9 +41,9 @@ class OperateurServiceImplTest  {
     void testAddOperateur() {
 /*
         Operateur op = new Operateur();
-        op.setNom("Operateur9");
-        op.setPassword("secret9");
-        op.setPrenom("Telecm9");
+        op.setNom("opNomTest");
+        op.setPassword("opPrenomTest");
+        op.setPrenom("opPassTest");
         Operateur opTest = operateurService.addOperateur(op);
         assertEquals(op.getNom(), opTest.getNom());*/
 
