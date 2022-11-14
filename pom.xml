@@ -8,14 +8,14 @@
 		<version>2.5.3</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>tn.esprit.rh</groupId>
-	<artifactId>achat</artifactId>
+	<groupId>com.esprit.examen</groupId>
+	<artifactId>tpAchatProject</artifactId>
 	<version>1.0</version>
-	<name>achat</name>
-	<description>Projet pour le module DevOps</description>
+	<name>tpAchatProject</name>
+	<description>tpAchatProject</description>
 	<properties>
 		<java.version>1.8</java.version>
-		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
+		<maven-jar-plugin.version>3.0.1</maven-jar-plugin.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -26,23 +26,34 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
 
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
+			<version>5.1.46</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-boot-starter</artifactId>
@@ -53,6 +64,10 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>3.0.0</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
 
 	</dependencies>
 
@@ -61,23 +76,45 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<excludes>
-						<exclude>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</exclude>
-					</excludes>
-				</configuration>
 			</plugin>
-			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
-				<version>3.1.0</version>
+				<version>3.0.1</version>
 			</plugin>
-			
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.19.1</version> <!-- matters until now-->
+				<dependencies>
+					<!-- to let surefire to run JUnit 4 but also JUnit 5 tests -->
+					<dependency>
+						<groupId>org.junit.platform</groupId>
+						<artifactId>junit-platform-surefire-provider</artifactId>
+						<version>1.0.1</version>
+					</dependency>
+					<!-- JUnit vintage engine to run JUnit 3 or JUnit 4 tests -->
+					<dependency>
+						<groupId>org.junit.vintage</groupId>
+						<artifactId>junit-vintage-engine</artifactId>
+						<version>4.12.1</version>
+					</dependency>
+					<!-- JUnit 5 engine to run JUnit 5 tests -->
+					<dependency>
+						<groupId>org.junit.jupiter</groupId>
+						<artifactId>junit-jupiter-engine</artifactId>
+						<version>5.0.1</version>
+					</dependency>
+				</dependencies>
+			</plugin>
 		</plugins>
+		<finalName>tpachatproject</finalName>
 	</build>
+	<distributionManagement>
+		<repository>
+			<id>deploymentRepo</id>
+			<name>Nexus Repository</name>
+			<url>http://192.168.1.19:8081/repository/maven-releases/</url>
+		</repository>
+	</distributionManagement>
 
 </project>
