@@ -46,7 +46,7 @@ pipeline{
          }
          stage("nexus deploy"){
                steps{
-               nexusArtifactUploader artifacts: [[artifactId: 'achat', classifier: '', file: '/var/lib/jenkins/workspace/Devops_Project/target/achat-1.0.jar', type: 'jar']], credentialsId: 'nexus3', groupId: 'tn.esprit.rh', nexusUrl: '192.168.56.10:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'http://192.168.56.10:8081/repository/maven_daly_release', version: '1.0'
+               nexusArtifactUploader artifacts: [[artifactId: 'achat', classifier: '', file: '/var/lib/jenkins/workspace/Devops_Project/target/achat-1.0.jar', type: 'jar']], credentialsId: 'nexus3', groupId: 'tn.esprit.rh', nexusUrl: '192.168.56.10:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven_daly_release', version: '1.0'
                }
          }
 
