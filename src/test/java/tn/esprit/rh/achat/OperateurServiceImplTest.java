@@ -8,6 +8,7 @@ import tn.esprit.rh.achat.services.IOperateurService;
 
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
@@ -20,7 +21,7 @@ class OperateurServiceImplTest  {
 
 
     @Test
-    @Order(2)
+    @Order(1)
     void testRetrieveAllOperateurs() {
 
         //Operateur op = operateurService.retrieveAllOperateurs(Operateur.builder().)
@@ -37,7 +38,7 @@ class OperateurServiceImplTest  {
 
 
     @Test
-    @Order(1)
+    @Order(2)
     void testAddOperateur() {
 /*
         Operateur op = new Operateur();
@@ -53,20 +54,36 @@ class OperateurServiceImplTest  {
 
     }
 
-/*
-    void deleteOperateur(Long id) {
+
+    @Test
+    @Order(3)
+    void testDeleteOperateur() {
+
+        Operateur op = new Operateur();
+        op.setNom("testNomOpDel");
+        op.setPrenom("testPrenomOpDel");
+        op.setPassword("testPassOpDel");
+
+        Operateur opx = operateurService.addOperateur(op);
+        operateurService.deleteOperateur(opx.getIdOperateur());
+        assertNotNull(opx.getIdOperateur());
 
     }
 
 
-    Operateur updateOperateur(Operateur o) {
-        return null;
+    @Test
+    @Order(4)
+    void testUpdateOperateur() {
+        Operateur op = new Operateur();
+        op.setNom("testNomOp");
+        op.setPrenom("testPrenomOp");
+        op.setPassword("testPassOp");
+
+        Operateur opx = operateurService.addOperateur(op);
+        opx.setNom("testNomOpUpdate");
+        operateurService.updateOperateur(opx);
+        assertEquals(op.getNom(),opx.getNom());
     }
 
-
-    Operateur retrieveOperateur(Long id) {
-        return null;
-    }
-    */
 
 }
