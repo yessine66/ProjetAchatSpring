@@ -18,7 +18,6 @@ services:
       - mysqldb
     build: ./
     container_name: springboot-app
-    restart: on-failure
     env_file: ./.env
     ports:
       - $SPRING_LOCAL_PORT:$SPRING_DOCKER_PORT
