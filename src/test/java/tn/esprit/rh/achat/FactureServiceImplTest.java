@@ -1,7 +1,7 @@
-package com.esprit.examen.services;
+package tn.esprit.rh.achat.services;
 
-import com.esprit.examen.entities.Facture;
-import com.esprit.examen.entities.Produit;
+import tn.esprit.rh.achat.entities.Facture;
+import tn.esprit.rh.achat.entities.Produit;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
