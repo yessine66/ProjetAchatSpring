@@ -6,7 +6,7 @@ services:
     restart: unless-stopped
     env_file: ./.env
     environment:
-      - MYSQL_DATABASE=1
+      - MYSQL_DATABASE= achatdb   
       - MYSQL_ALLOW_EMPTY_PASSWORD=1
     ports:
       - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
