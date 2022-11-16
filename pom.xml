@@ -103,7 +103,7 @@
 <distributionManagement>
 	<snapshotRepository>
 		<id>nexus-snapshots</id>
-		<url>http://192.168.100.200:8081/repository/maven-snapshots/</url>
+		<url>http://192.168.100.200:8081/repository/nexus-snapshots/</url>
 	</snapshotRepository>
 	<repository>
 		<id>nexus-releases</id>
