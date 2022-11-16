@@ -58,6 +58,8 @@ pipeline{
 
          stage('Push Docker Image') {
                 steps {
+                    sh 'docker login -u medazizbennasr -p azizaziz1996'
+                    
                 sh 'docker push medazizbennasr/spring_achat:1.0.0'
              }
         }
