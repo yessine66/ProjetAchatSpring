@@ -8,7 +8,6 @@ services:
     environment:
       - MYSQL_DATABASE=1
       - MYSQL_ALLOW_EMPTY_PASSWORD=1
-    restart: always
     ports:
       - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
     volumes:
