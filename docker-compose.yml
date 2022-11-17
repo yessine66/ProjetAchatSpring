@@ -15,7 +15,7 @@ services:
   app:
     depends_on:
       - mysqldb
-    image:  mehdidagdagui/devops
+    image: mehdidagdagui/devops
 
     container_name: springboot-app
     restart: on-failure
