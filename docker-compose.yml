@@ -15,7 +15,8 @@ services:
   app:
     depends_on:
       - mysqldb
-    build: ./
+    image:  mehdidagdagui/devops
+
     container_name: springboot-app
     restart: on-failure
     env_file: ./.env
