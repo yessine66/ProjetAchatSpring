@@ -47,13 +47,13 @@ pipeline{
                  steps{
                  // nexusArtifactUploader artifacts: [[artifactId: 'achat', classifier: '', file: '/var/lib/jenkins/workspace/SpringP/target/docker-spring-boot.jar', type: 'jar']], credentialsId: 'nexus-snapshots', groupId: 'tn.esprit.rh', nexusUrl: '192.168.100.200:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'nexus-snapshots', version: '1.0.0'
                   //  sh 'mvn deploy'
-                  nexusArtifactUploader artifacts: [[artifactId: 'achat', classifier: '', file: '/var/lib/jenkins/workspace/SpringP/target/docker-spring-boot.jar', type: 'jar']], credentialsId: 'nexus3', groupId: 'tn.esprit.rh', nexusUrl: '192.168.1.5:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'nexus-snapshots', version: '1.2.3'
+                  nexusArtifactUploader artifacts: [[artifactId: 'achat', classifier: '', file: '/var/lib/jenkins/workspace/SpringP/target/docker-spring-boot.jar', type: 'jar']], credentialsId: 'nexus3', groupId: 'tn.esprit.rh', nexusUrl: '192.168.1.7:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'nexus-snapshots', version: '1.2.3'
                }
          }
 
          stage('Build Docker Image') {
                steps {
-               sh 'docker build -t medazizbennasr/spring_achat:1.0.0 .'
+               sh 'docker build -t medazizbennasr/spring_achat:1.0.0 .' //bech yasnaa image
                 }
          }
 
